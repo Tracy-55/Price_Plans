@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Total Phone Bill Calculator</title>
+    <!-- Adding Bootstrap CSS for styling -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+    <style>
+      /* Custom Styles */
+      body {
+        background-image: url("hand-showing-sql-word-and-sql-structured-query-language-code-with-server-room-background-photo.jpg");
+        background-size: auto;
+        color: #333;
+        font-family: Arial, sans-serif;
+      }
+      .container {
+        margin-top: 50px;
+      }
+      .card {
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
+      .card-header {
+        background-color: #007bff;
+        color: #fff;
+        border-radius: 10px 10px 0 0;
+      }
+      .card-body {
+        padding: 2rem;
+      }
+      .btn-primary {
+        background-color: #007bff;
+        border-color: #007bff;
+        border-radius: 5px;
+      }
+      .btn-primary:hover {
+        background-color: #0056b3;
+        border-color: #004085;
+      }
+      .total-bill {
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: #007bff;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-md-6">
+          <div class="card">
+            <div class="card-header text-center">
+              <h2>Total Phone Bill Calculator</h2>
+            </div>
+            <div class="card-body">
+              <form id="phoneBillForm">
+                <div class="form-group">
+                  <label for="calls">Number of Calls:</label>
+                  <input
+                    type="number"
+                    id="calls"
+                    class="form-control"
+                    placeholder="Enter number of calls" />
+                </div>
+                <div class="form-group">
+                  <label for="sms">Number of SMS:</label>
+                  <input
+                    type="number"
+                    id="sms"
+                    class="form-control"
+                    placeholder="Enter number of SMS" />
+                </div>
+                <button
+                  type="button"
+                  class="btn btn-primary btn-block"
+                  onclick="calculateBill()">
+                  Calculate Bill
+                </button>
+              </form>
+              <div id="result" class="mt-4 text-center">
+                <p class="total-bill">Total Bill: R <span id="total"></span></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bootstrap JS and dependencies (for interactive elements) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script>
+      function calculateBill() {
+        // Get the values from the input fields
+        const calls = document.getElementById("calls").value;
+        const sms = document.getElementById("sms").value;
+
+        // Here, I send a request to MY backend API to calculate the total bill
+
+        const callRate = 2.75; // call rate
+        const smsRate = 0.75; //  SMS rate
+
+        const totalBill = calls * callRate + sms * smsRate;
+
+        // Display the total bill amount
+        document.getElementById("total").innerText = totalBill.toFixed(2);
+      }
+    </script>
+  </body>
+</html>
